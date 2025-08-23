@@ -1,0 +1,5 @@
+<%= render 'shared/header_with_button', title: 'Recipes', link_text: 'New Recipe', link: new_recipe_path, body_text: "All Recipes created by members" %>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-4">
+  <%= render @recipes %>
+</div>

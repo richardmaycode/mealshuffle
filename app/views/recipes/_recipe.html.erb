@@ -1,0 +1,42 @@
+<turbo-frame id="recipe-<%= recipe.id %>">
+  <article class="relative bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 border-t-0">
+      <%= image_tag recipe.image.attached? ? url_for(recipe.image) : "https://placehold.co/600x400", class: "rounded-t-lg", height: 400, width: 600 %>
+      <div class="p-5">
+        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <%= link_to recipe.name, recipe_path(recipe), class: "hover:underline", target: "_top" %>
+        </h3>
+        <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+        <div class="flex flex-col gap-4">
+          <% Trait.categories.each do |key, value| %>
+            <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: recipe.traits.names_by_category(key.to_sym) %>
+          <% end %>
+
+          <div class="mt-4 sm:flex sm:items-center justify-end sm:gap-2">
+            <div class="flex items-center gap-1 text-gray-500 dark:text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+              </svg>
+
+              <p class="text-xs"><%= recipe.created_at.strftime("%d.%m.%Y") %></p>
+            </div>
+
+            <span class="hidden sm:block dark:text-gray-400" aria-hidden="true">&middot;</span>
+
+            <p class="hidden sm:block sm:text-xs sm:text-gray-500 dark:text-gray-400">
+              <a href="#" class="font-medium underline hover:text-gray-700"> <%= recipe.creator.email_address %> </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <#% if !@user_recipe_ids.include?(recipe.id) %>
+      <div class="absolute top-4 right-4 flex dark:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+        </svg>
+      </div>
+      <#% end %> -->
+  </article>
+
+</turbo-frame>

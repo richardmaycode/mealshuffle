@@ -1,0 +1,83 @@
+<%= form_with(model: @recipe, class:"flex flex-col max-w-4xl mx-auto p-6 mb-12 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700") do |form| %>
+  <%= tag.div class: "flex flex-col gap-2 my-2" do %>
+    <%= form.label :name, 'Recipe Name', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.text_field :name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  <% end %>
+
+  <%= tag.div class: "my-2" do %>
+    <%= form.label :meal_ids, 'Meal Types', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <div class="flex flex-wrap gap-4">
+      <%= form.collection_checkboxes :meal_ids, Trait.meal.all, :id, :name do |meal_choice| %>
+        <div class="flex items-center">
+          <%= meal_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+            <%= meal_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+            <span class="ml-1"><%= meal_choice.text %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= tag.div class: "my-2" do %>
+     <%= form.label :protein_ids, 'Protein Sources', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+     <div class="flex flex-wrap gap-4">
+       <%= form.collection_checkboxes :protein_ids, Trait.protein.all, :id, :name do |protein_choice| %>
+         <div class="flex items-center">
+           <%= protein_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+             <%= protein_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+             <span class="ml-1"><%= protein_choice.text %></span>
+           <% end %>
+         </div>
+       <% end %>
+     </div>
+   <% end %>
+
+   <%= tag.div class: "my-2" do %>
+     <%= form.label :carb_ids, 'Carb Sources', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+     <div class="flex flex-wrap gap-4">
+       <%= form.collection_checkboxes :carbohydrate_ids, Trait.carbohydrate.all, :id, :name do |carb_choice| %>
+         <div class="flex items-center">
+           <%= carb_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+             <%= carb_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+             <span class="ml-1"><%= carb_choice.text %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+   <% end %>
+
+  <%= tag.div class: "my-2" do %>
+    <%= form.label :cuisine_ids, 'Cuisine Type', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <div class="flex flex-wrap gap-2">
+      <%= form.collection_checkboxes :cuisine_ids, Trait.cuisine, :id, :name do |cuisine_choice| %>
+        <div class="flex items-center">
+          <%= cuisine_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
+            <%= cuisine_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+            <span class="ml-1"><%= cuisine_choice.text %></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= tag.div class: "my-2" do %>
+     <%= form.label :servings, 'Servings', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+     <%= form.number_field :servings, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  <% end %>
+
+  <% if @recipe.image.attached? %>
+    <%= image_tag url_for(@recipe.image), class: "w-24 h-24 rounded-full" %>
+  <% end %>
+
+  <%= tag.div class: "my-2" do %>
+    <%= form.label :image, 'Image', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= form.file_field :image, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+  <% end %>
+
+  <div class="flex justify-between my-4">
+    <%= form.submit class: "grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+
+    <%= link_to 'Cancel', recipes_path, class: "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" %>
+  </div>
+<% end %>

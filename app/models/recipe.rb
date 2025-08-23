@@ -17,6 +17,11 @@ class Recipe < ApplicationRecord
     end
   end
 
+  has_many :proteins, -> { where category: :protein }, through: :recipe_traits, source: :trait
+  has_many :carbohydrates, -> { where category: :carbohydrate }, through: :recipe_traits, source: :trait
+  has_many :meals, -> { where category: :meal }, through: :recipe_traits, source: :trait
+  has_many :cuisines, -> { where category: :cuisine }, through: :recipe_traits, source: :trait
+
   validates :name, presence: true, length: { in: 2..100 }
   validates :servings, presence: true, numericality: { greater_than_or_equal_to: 1 }
 end

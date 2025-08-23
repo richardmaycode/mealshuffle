@@ -27,7 +27,7 @@ RECIPES = [
   { name: "Garlic Bread Dip", traits: %w[chicken italian dinner] },
   { name: "Garlic Parm Chicken Bites", traits: %w[chicken italian dinner potatoes] },
     { name: "Honey BBQ Bowls", traits: %w[chicken american dinner potatoes] },
-    { name: "Honey Garlic Lo Mein", traits: %w[chicken chinese dinner pasta"] },
+    { name: "Honey Garlic Lo Mein", traits: %w[chicken chinese dinner pasta] },
     { name: "KFC Bowl", traits: %w[chicken american dinner potatoes] },
     { name: "Loaded Alfredo Fries", traits: %w[chicken italian dinner potatoes] },
     { name: "Loaded Animal Fries", traits: %w[beef american dinner potatoes] },
@@ -36,7 +36,7 @@ RECIPES = [
     { name: "Pesto Chicken and Veggies", traits: %w[chicken italian dinner] },
     { name: "Philly Cheesesteak Fries", traits: %w[beef american dinner potatoes] },
     { name: "Sheet Pan BBQ Meatloaf", traits: %w[beef american dinner potatoes] },
-    { name: "Shredded BBQ Chicken Bowls", traits: %w[chicken american dinner mac & cheese] },
+    { name: "Shredded BBQ Chicken Bowls", traits: %w[chicken american dinner mac_&_cheese] },
     { name: "Slow Cooker Pesto Mozzarella Pasta", traits: %w[chicken italian dinner pasta] },
     { name: "Southwest Street Taco Bowl ", traits: %w[chicken mexican dinner potatoes] },
     { name: "Southwestern Alfredo Bowls", traits: %w[chicken italian dinner pasta] },
@@ -47,7 +47,7 @@ RECIPES = [
 
 TRAITS.each do |trait, values|
   values.each do |value|
-    Trait.find_or_create_by!(name: value, category: trait.to_sym)
+    Trait.find_or_create_by!(name: value.split("_").join(" ").titleize, category: trait.to_sym)
   end
 end
 
@@ -58,7 +58,7 @@ RECIPES.each do |recipe|
   new_recipe = Recipe.find_or_create_by!(name: recipe[:name], servings: 1, creator: User.first)
   recipe[:traits].each do |trait|
     puts "Adding trait: #{trait}"
-    new_recipe.traits << Trait.find_or_create_by!(name: trait)
+    new_recipe.traits << Trait.find_or_create_by!(name: trait.split("_").join(" ").titleize)
   end
 end
 
