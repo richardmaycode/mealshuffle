@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_24_202601) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_203129) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -81,6 +81,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_202601) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "shuffle_traits", force: :cascade do |t|
+    t.integer "shuffle_id", null: false
+    t.integer "trait_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shuffle_id"], name: "index_shuffle_traits_on_shuffle_id"
+    t.index ["trait_id"], name: "index_shuffle_traits_on_trait_id"
+  end
+
   create_table "shuffles", force: :cascade do |t|
     t.string "share_token", null: false
     t.integer "user_id"
@@ -122,6 +131,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_202601) do
   add_foreign_key "recipe_traits", "traits"
   add_foreign_key "recipes", "users", column: "creator_id"
   add_foreign_key "sessions", "users"
+  add_foreign_key "shuffle_traits", "shuffles"
+  add_foreign_key "shuffle_traits", "traits"
   add_foreign_key "shuffles", "users"
   add_foreign_key "sources", "creators"
   add_foreign_key "sources", "recipes"

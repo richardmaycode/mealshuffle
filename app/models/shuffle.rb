@@ -1,5 +1,12 @@
 class Shuffle < ApplicationRecord
   has_one :user, required: false
+  has_many :shuffle_traits, dependent: :destroy
+  has_many :traits, through: :shuffle_traits
+
+  has_many :proteins, -> { where category: :protein }, through: :shuffle_traits, source: :trait
+  has_many :carbohydrates, -> { where category: :carbohydrate }, through: :shuffle_traits, source: :trait
+  has_many :meals, -> { where category: :meal }, through: :shuffle_traits, source: :trait
+  has_many :cuisines, -> { where category: :cuisine }, through: :shuffle_traits, source: :trait
 
   validates :share_token, presence: true
 
