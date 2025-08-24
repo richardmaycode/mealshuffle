@@ -2,7 +2,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:creator, :proteins, :image_attachment, :recipe_traits, :traits).all
+    @traits = Trait.categories.keys
   end
 
   def show; end

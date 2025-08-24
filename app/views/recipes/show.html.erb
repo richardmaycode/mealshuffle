@@ -18,7 +18,7 @@
       #   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
       #     <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
       #   </svg>
-  
+
       #   <#% end %>
       # <#% end %>
       -->
@@ -29,8 +29,8 @@
     <h5 class="mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Attributes</h5>
     <div class="flex flex-col gap-4">
       <!-- Trait Categories -->
-      <% Trait.categories.each do |key, value| %>
-        <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: @recipe.traits.names_by_category(key.to_sym) %>
+      <% @traits.each do |key, value| %>
+        <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: "" %>
       <% end %>
       <!-- /Trait Categories -->
       <%= link_to edit_recipe_path(@recipe), class: 'absolute top-5 right-5 px-3 py-2 text-xs font-medium text-center inline-flex gap-2 items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' do %>

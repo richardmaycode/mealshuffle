@@ -8,8 +8,8 @@
         <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
 
         <div class="flex flex-col gap-4">
-          <% Trait.categories.each do |key, value| %>
-            <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: recipe.traits.names_by_category(key.to_sym) %>
+          <% @traits.each do |key, value| %>
+            <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: recipe.traits.select{ |x| x.category == key.to_sym}.map(&:name).join(", ") %>
           <% end %>
 
           <div class="mt-4 sm:flex sm:items-center justify-end sm:gap-2">
