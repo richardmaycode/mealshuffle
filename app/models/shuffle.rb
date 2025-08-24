@@ -10,6 +10,7 @@ class Shuffle < ApplicationRecord
   has_many :carbohydrates, -> { where category: :carbohydrate }, through: :shuffle_traits, source: :trait
   has_many :meals, -> { where category: :meal }, through: :shuffle_traits, source: :trait
   has_many :cuisines, -> { where category: :cuisine }, through: :shuffle_traits, source: :trait
+  has_many :shuffle_recipes, dependent: :destroy
 
   validates :share_token, presence: true
 

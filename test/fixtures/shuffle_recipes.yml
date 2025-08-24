@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  outcome: 1
+  order_index: 1
+  shuffle: one
+  recipe: one
+
+two:
+  outcome: 1
+  order_index: 1
+  shuffle: two
+  recipe: two
