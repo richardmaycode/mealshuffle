@@ -1,4 +1,7 @@
 class Shuffle < ApplicationRecord
+  MAX_RANDOM_RECIPES = 20
+  EXPIRATION_DAYS = 14
+
   has_one :user, required: false
   has_many :shuffle_traits, dependent: :destroy
   has_many :traits, through: :shuffle_traits
@@ -14,6 +17,10 @@ class Shuffle < ApplicationRecord
 
   def reset_share_token
     update! share_token: generate_share_token
+  end
+
+  def expiration_date
+    EXPIRATION_DAYS.days.from_now
   end
 
   private
