@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  share_token: MyString
+  user: one
+
+two:
+  share_token: MyString
+  user: two

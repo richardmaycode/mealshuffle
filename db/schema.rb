@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_23_195256) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_202601) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -81,6 +81,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_195256) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "shuffles", force: :cascade do |t|
+    t.string "share_token", null: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shuffles_on_user_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "url", null: false
     t.text "note"
@@ -114,6 +122,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_195256) do
   add_foreign_key "recipe_traits", "traits"
   add_foreign_key "recipes", "users", column: "creator_id"
   add_foreign_key "sessions", "users"
+  add_foreign_key "shuffles", "users"
   add_foreign_key "sources", "creators"
   add_foreign_key "sources", "recipes"
 end
