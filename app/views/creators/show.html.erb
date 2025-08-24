@@ -1,0 +1,35 @@
+<%= render "shared/back_button", text: "&larr; Back", path: recipes_path %>
+<div class="flex flex-col justify-center text-center">
+  <h1 class="font-bold text-4xl dark:text-white"><%= @creator.display_name %></h1>
+  <p class="dark:text-white">Creator Details</p>
+</div>
+
+<turbo-frame id="creator">
+  <div class="relative w-lg my-6 mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <h5 class="mb-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Attributes</h5>
+    <div class="flex flex-col gap-4">
+      <div class="flex justify-between">
+        <div class=" flex align-center gap-2 text-sm text-gray-700 font-bold dark:text-white">
+          <!-- <#%= image_tag icon_name, class: "dark:invert" %> -->
+          Display Name
+        </div>
+        <div class="flex flex-wrap content-end dark:text-gray-50">
+          <%= @creator.display_name %>
+        </div>
+      </div>
+
+      <div class="flex justify-between">
+        <div class=" flex align-center gap-2 text-sm text-gray-700 font-bold dark:text-white">
+          <!-- <#%= image_tag icon_name, class: "dark:invert" %> -->
+          Number of Recipes
+        </div>
+        <div class="flex flex-wrap content-end dark:text-gray-50">
+          <%= @creator.recipes.count %>
+        </div>
+      </div>
+    </div>
+    <%= tag.div class: "w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-700 mt-6" do %>
+      <%= render partial: "creators/location", collection: @creator.locations %>
+    <% end %>
+  </div>
+</turbo-frame>

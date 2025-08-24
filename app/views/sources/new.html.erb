@@ -1,0 +1,6 @@
+<div class="flex flex-col justify-center text-center">
+  <h1 class="font-bold text-4xl dark:text-white">Create Source</h1>
+  <p class="dark:text-white">Adding source details for <%= link_to @recipe.name, recipe_path(@recipe), class: "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline" %></p>
+</div>
+<%= render "shared/form_errors", object: @source %>
+<%= render "form" %>

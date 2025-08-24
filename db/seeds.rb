@@ -17,7 +17,7 @@ TRAITS = {
 
 RECIPES = [
   { name: "BBQ Bacon Cheeseburger Bowls", traits: %w[beef american dinner potatoes] },
-  { name: "Basil Pesto Chicken & Risotto", traits: %w[italian american dinner rice] },
+  { name: "Basil Pesto Chicken & Risotto", traits: %w[chicken italian american dinner rice] },
   { name: "Cheesy Cajun Rice", traits: %w[sausage american dinner rice] },
   { name: "Chicken Parm Bowl", traits: %w[chicken italian dinner pasta] },
   { name: "Chicken Parm Cheesy Bread", traits: %w[chicken italian dinner bread] },
@@ -26,23 +26,23 @@ RECIPES = [
   { name: "Creamy Chicken Casserole ", traits: %w[chicken american dinner] },
   { name: "Garlic Bread Dip", traits: %w[chicken italian dinner] },
   { name: "Garlic Parm Chicken Bites", traits: %w[chicken italian dinner potatoes] },
-    { name: "Honey BBQ Bowls", traits: %w[chicken american dinner potatoes] },
-    { name: "Honey Garlic Lo Mein", traits: %w[chicken chinese dinner pasta] },
-    { name: "KFC Bowl", traits: %w[chicken american dinner potatoes] },
-    { name: "Loaded Alfredo Fries", traits: %w[chicken italian dinner potatoes] },
-    { name: "Loaded Animal Fries", traits: %w[beef american dinner potatoes] },
-    { name: "Loaded Twice Baked Potato", traits: %w[chicken american dinner potatoes] },
-    { name: "Million Dollar Spaghetti", traits: %w[beef italian dinner pasta] },
-    { name: "Pesto Chicken and Veggies", traits: %w[chicken italian dinner] },
-    { name: "Philly Cheesesteak Fries", traits: %w[beef american dinner potatoes] },
-    { name: "Sheet Pan BBQ Meatloaf", traits: %w[beef american dinner potatoes] },
-    { name: "Shredded BBQ Chicken Bowls", traits: %w[chicken american dinner mac_&_cheese] },
-    { name: "Slow Cooker Pesto Mozzarella Pasta", traits: %w[chicken italian dinner pasta] },
-    { name: "Southwest Street Taco Bowl ", traits: %w[chicken mexican dinner potatoes] },
-    { name: "Southwestern Alfredo Bowls", traits: %w[chicken italian dinner pasta] },
-    { name: "Spicy Chicken and Rice", traits: %w[chicken american dinner rice] },
-    { name: "Walking Taco Bowl", traits: %w[beef mexican dinner rice] },
-    { name: "White Chicken Lasagna", traits: %w[chicken italian dinner pasta] }
+  { name: "Honey BBQ Bowls", traits: %w[chicken american dinner potatoes] },
+  { name: "Honey Garlic Lo Mein", traits: %w[chicken chinese dinner pasta] },
+  { name: "KFC Bowl", traits: %w[chicken american dinner potatoes] },
+  { name: "Loaded Alfredo Fries", traits: %w[chicken italian dinner potatoes] },
+  { name: "Loaded Animal Fries", traits: %w[beef american dinner potatoes] },
+  { name: "Loaded Twice Baked Potato", traits: %w[chicken american dinner potatoes] },
+  { name: "Million Dollar Spaghetti", traits: %w[beef italian dinner pasta] },
+  { name: "Pesto Chicken and Veggies", traits: %w[chicken italian dinner] },
+  { name: "Philly Cheesesteak Fries", traits: %w[beef american dinner potatoes] },
+  { name: "Sheet Pan BBQ Meatloaf", traits: %w[beef american dinner potatoes] },
+  { name: "Shredded BBQ Chicken Bowls", traits: %w[chicken american dinner mac_&_cheese] },
+  { name: "Slow Cooker Pesto Mozzarella Pasta", traits: %w[chicken italian dinner pasta] },
+  { name: "Southwest Street Taco Bowl ", traits: %w[chicken mexican dinner potatoes] },
+  { name: "Southwestern Alfredo Bowls", traits: %w[chicken italian dinner pasta] },
+  { name: "Spicy Chicken and Rice", traits: %w[chicken ham american dinner rice] },
+  { name: "Walking Taco Bowl", traits: %w[beef mexican dinner rice] },
+  { name: "White Chicken Lasagna", traits: %w[chicken italian dinner pasta] }
 ]
 
 TRAITS.each do |trait, values|
@@ -62,5 +62,9 @@ RECIPES.each do |recipe|
   end
 end
 
-# For example, to create a new user:
-# User.create!(name: 'John Doe', email: 'john@example.com')
+creator = Creator.create! display_name: "MaKayla | Food + Fitness"
+creator2 = Creator.create! display_name: "Dinnerly"
+Location.create! platform: :tiktok, creator: creator, handle: "makayla_thomas_fit"
+Location.create! platform: :website, creator: creator2, handle: "dinnerly.com"
+
+Source.create! url: "https://www.example.com", creator: creator, recipe: Recipe.first, note: "This is a note"

@@ -6,6 +6,8 @@ class Recipe < ApplicationRecord
   end
 
   belongs_to :creator, class_name: "User"
+  has_one :source, dependent: :destroy
+  has_one :source_creator, through: :source, class_name: "Creator"
   has_many :recipe_traits, dependent: :destroy
   has_many :traits, through: :recipe_traits do
     def by_category(category)

@@ -1,0 +1,43 @@
+<div>
+  <h1 class="font-bold text-4xl">Sources#show</h1>
+  <p>Find me in app/views/sources/show.html.erb</p>
+</div>
+
+<turbo-frame id="source">
+  <%= tag.div class: "w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-700 mt-6" do %>
+    <div class="flex flex-col gap-4">
+      <div class="flex justify-between">
+        <div class=" flex align-center gap-2 text-sm text-gray-700 font-bold dark:text-white">
+          <!-- <#%= image_tag icon_name, class: "dark:invert" %> -->
+          URL
+        </div>
+        <div class="flex flex-wrap content-end dark:text-gray-50">
+          <%= link_to @source.url_domain, @source.url, target: "_top", class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <div class=" flex align-center gap-2 text-sm text-gray-700 font-bold dark:text-white">
+          <!-- <#%= image_tag icon_name, class: "dark:invert" %> -->
+          Creator
+        </div>
+        <div class="flex flex-wrap content-end dark:text-gray-50">
+          <%= link_to @source.creator.display_name, creator_path(@source.creator), target: "_top", class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+        </div>
+      </div>
+
+      <div class="flex justify-between">
+        <div class=" flex align-center gap-2 text-sm text-gray-700 font-bold dark:text-white">
+          <!-- <#%= image_tag icon_name, class: "dark:invert" %> -->
+          Note
+        </div>
+        <div class="flex flex-wrap content-end dark:text-gray-50">
+          <%= @source.note.empty? ? "No notes" : @source.note %>
+        </div>
+      </div>
+
+      <div class="flex justify-center sm:block sm:text-xs sm:text-gray-500 dark:text-gray-400">
+        <p class="text-center">Source Details</p>
+      </div>
+    </div>
+  <% end %>
+</turbo-frame>
