@@ -83,7 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_204426) do
 
   create_table "shuffle_recipes", force: :cascade do |t|
     t.integer "status", default: 0, null: false
-    t.integer "order_index", default: 0, null: false
+    t.integer "position", default: 0, null: false
     t.integer "shuffle_id", null: false
     t.integer "recipe_id", null: false
     t.datetime "created_at", null: false

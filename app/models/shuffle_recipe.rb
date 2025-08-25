@@ -4,5 +4,5 @@ class ShuffleRecipe < ApplicationRecord
   belongs_to :shuffle
   belongs_to :recipe
 
-  validates :order_index, presence: true, numericality: { greater_than_or_equal_to: 0 }, uniqueness: { scope: :shuffle_id }
+  validates :position, presence: true, numericality: { greater_than_or_equal_to: 0 }, uniqueness: { scope: :shuffle_id }
 end

@@ -15,6 +15,7 @@ class Shuffle < ApplicationRecord
   # validates :share_token, presence: true
 
   before_create { self.share_token = generate_share_token }
+  after_create :assign_recipes
 
   def reset_share_token
     update! share_token: generate_share_token
@@ -22,6 +23,18 @@ class Shuffle < ApplicationRecord
 
   def expiration_date
     EXPIRATION_DAYS.days.from_now
+  end
+
+  def requested_recipes
+    requested_recipes = Recipe.includes(:traits).where(traits: { id: trait_ids }).distinct.pluck(:id)
+  end
+
+  def assign_recipes
+    recipes = requested_recipes.shuffle
+    recipes.each_with_index do |recipe, index|
+      puts "Assigning recipe #{recipe} to position #{index}"
+      shuffle_recipes.create(recipe_id: recipe, position: index)
+    end
   end
 
   private
