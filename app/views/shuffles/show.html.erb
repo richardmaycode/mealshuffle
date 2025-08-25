@@ -2,3 +2,5 @@
   <h1 class="font-bold text-4xl">Shuffles#show</h1>
   <p>Find me in app/views/shuffles/show.html.erb</p>
 </div>
+
+<turbo-frame id="shuffle-recipe" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes/<%= @shuffle.shuffle_recipes.first.id %>"></turbo-frame>

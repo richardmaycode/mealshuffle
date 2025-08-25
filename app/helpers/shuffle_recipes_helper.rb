@@ -1,0 +1,2 @@
+module ShuffleRecipesHelper
+end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :sources, only: %i[show new create edit update destroy  ]
   end
-  resources :shuffles, only: %i[index show new create]
+  resources :shuffles, only: %i[index show new create] do
+    resources :shuffle_recipes, only: %i[index show update]
+  end
   resources :sources, only: %i[show new create edit ]
 
   # Authentication

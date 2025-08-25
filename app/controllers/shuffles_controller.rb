@@ -3,6 +3,7 @@ class ShufflesController < ApplicationController
   end
 
   def show
+    @shuffle = Shuffle.find(params[:id])
   end
 
   def new

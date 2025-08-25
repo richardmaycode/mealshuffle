@@ -37,6 +37,18 @@ class Shuffle < ApplicationRecord
     end
   end
 
+  def current_index
+    shuffle_recipes.pending.order(:position).pluck(:position).first || 0
+  end
+
+  def voting_complete?
+    shuffle_recipes.pending.empty?
+  end
+
+  def voting_tally
+    shuffle_recipes.pluck(:status).tally
+  end
+
   private
 
   def generate_share_token
