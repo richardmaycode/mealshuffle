@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get "creators/show"
-  get "sources/show"
-  get "sources/new"
+  resources :creators, only: %i[ show ]
   resources :recipes do
     resources :sources, only: %i[show new create edit update destroy  ]
   end
+  resources :shuffles, only: %i[index show new create]
+  resources :sources, only: %i[show new create edit ]
+
+  # Authentication
   resource :session
   resources :passwords, param: :token
-  resources :sources, only: %i[show new create edit ]
-  resources :creators, only: %i[ show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
