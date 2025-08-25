@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   before_action :set_trait_categories, only: %i[index show]
+  before_action :set_form_traits, only: %i[new create edit update]
 
   def index
     @recipes = Recipe.includes(:creator, :proteins, :image_attachment, :recipe_traits, :traits).all
@@ -44,6 +45,10 @@ class RecipesController < ApplicationController
 
   def set_trait_categories
     @traits = Trait.categories.keys
+  end
+
+  def set_form_traits
+    @form_traits = Trait.all
   end
 
   def recipe_params

@@ -7,7 +7,7 @@
   <%= tag.div class: "my-2" do %>
     <%= form.label :meal_ids, 'Meal Types', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
     <div class="flex flex-wrap gap-4">
-      <%= form.collection_checkboxes :meal_ids, Trait.meal.all, :id, :name do |meal_choice| %>
+      <%= form.collection_checkboxes :meal_ids, @form_traits.select { |x| x.category == 'meal' }, :id, :name do |meal_choice| %>
         <div class="flex items-center">
           <%= meal_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
             <%= meal_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
@@ -21,7 +21,7 @@
   <%= tag.div class: "my-2" do %>
      <%= form.label :protein_ids, 'Protein Sources', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
      <div class="flex flex-wrap gap-4">
-       <%= form.collection_checkboxes :protein_ids, Trait.protein.all, :id, :name do |protein_choice| %>
+       <%= form.collection_checkboxes :protein_ids, @form_traits.select { |x| x.category == 'protein' }, :id, :name do |protein_choice| %>
          <div class="flex items-center">
            <%= protein_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
              <%= protein_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
@@ -35,7 +35,7 @@
    <%= tag.div class: "my-2" do %>
      <%= form.label :carb_ids, 'Carb Sources', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
      <div class="flex flex-wrap gap-4">
-       <%= form.collection_checkboxes :carbohydrate_ids, Trait.carbohydrate.all, :id, :name do |carb_choice| %>
+       <%= form.collection_checkboxes :carbohydrate_ids, @form_traits.select { |x| x.category == 'carbohydrate' }, :id, :name do |carb_choice| %>
          <div class="flex items-center">
            <%= carb_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
              <%= carb_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
@@ -49,7 +49,7 @@
   <%= tag.div class: "my-2" do %>
     <%= form.label :cuisine_ids, 'Cuisine Type', class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
     <div class="flex flex-wrap gap-2">
-      <%= form.collection_checkboxes :cuisine_ids, Trait.cuisine, :id, :name do |cuisine_choice| %>
+      <%= form.collection_checkboxes :cuisine_ids, @form_traits.select { |x| x.category == 'cuisine' }, :id, :name do |cuisine_choice| %>
         <div class="flex items-center">
           <%= cuisine_choice.label class: "w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" do %>
             <%= cuisine_choice.check_box class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
