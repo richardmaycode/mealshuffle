@@ -46,8 +46,10 @@ RECIPES = [
 ]
 
 TRAITS.each do |trait, values|
+  puts "Creating trait Category: #{trait}"
   values.each do |value|
-    Trait.find_or_create_by!(name: value.split("_").join(" ").titleize, category: trait.to_sym)
+    new_trait = Trait.find_or_create_by!(name: value.split("_").join(" ").titleize, category: trait.to_sym)
+    puts "Trait: #{new_trait.name} - #{new_trait.category}"
   end
 end
 

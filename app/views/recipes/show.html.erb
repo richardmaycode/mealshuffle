@@ -30,12 +30,12 @@
     <div class="flex flex-col gap-4">
       <!-- Trait Categories -->
       <% @traits.each do |key, value| %>
-        <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: "" %>
+        <%= render "trait_line", icon_name: Trait.icon(key.to_sym), trait_name: key.titleize, trait_values: @recipe.traits.select{ |x| x.category == key }.map(&:name).join(", ")  %>
       <% end %>
       <!-- /Trait Categories -->
       <%= link_to edit_recipe_path(@recipe), class: 'absolute top-5 right-5 px-3 py-2 text-xs font-medium text-center inline-flex gap-2 items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" ></path>
         </svg>
         Edit Recipe
       <% end %>

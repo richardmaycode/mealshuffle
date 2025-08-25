@@ -1,6 +1,3 @@
-<div>
-  <h1 class="font-bold text-4xl">Shuffles#new</h1>
-  <p>Find me in app/views/shuffles/new.html.erb</p>
-</div>
-
+<%= render 'shared/form_header', title: 'New Shuffle' %>
+<%= render 'shared/form_errors', object: @shuffle %>
 <%= render 'form' %>

@@ -12,7 +12,7 @@ class Shuffle < ApplicationRecord
   has_many :cuisines, -> { where category: :cuisine }, through: :shuffle_traits, source: :trait
   has_many :shuffle_recipes, dependent: :destroy
 
-  validates :share_token, presence: true
+  # validates :share_token, presence: true
 
   before_create { self.share_token = generate_share_token }
 

@@ -103,6 +103,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_204426) do
 
   create_table "shuffles", force: :cascade do |t|
     t.string "share_token", null: false
+    t.boolean "saved_recipes", default: false
+    t.datetime "expiration_date"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,6 +125,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_204426) do
   create_table "traits", force: :cascade do |t|
     t.string "name", null: false
     t.integer "category", default: 0, null: false
+    t.integer "recipe_traits_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
