@@ -28,4 +28,11 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      shuffle_recipe:
+        status:
+          pending: "Pending"
+          accepted: "Accepted"
+          rejected: "Rejected"
+          skipped: "Skipped"

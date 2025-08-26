@@ -3,6 +3,7 @@ class ShuffleRecipesController < ApplicationController
   before_action :set_shuffle_recipe, only: %i[show update]
 
   def index
+    @shuffle_recipes = @shuffle.shuffle_recipes
   end
 
   def show
@@ -11,7 +12,10 @@ class ShuffleRecipesController < ApplicationController
 
   def update
     if @shuffle_recipe.update(status: params[:status].to_sym)
-      redirect_to shuffle_shuffle_recipe_path(@shuffle, @shuffle.shuffle_recipes.where(position: @shuffle.current_index).first)
+      respond_to do |format|
+        # format.html { redirect_to shuffle_shuffle_recipe_path(@shuffle, @shuffle.shuffle_recipes.where(position: @shuffle.current_index).first) }
+        format.turbo_stream
+      end
     else
       render :edit, status: :unprocessable_entity
     end

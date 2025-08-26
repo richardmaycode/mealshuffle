@@ -3,4 +3,6 @@
   <p>Find me in app/views/shuffles/show.html.erb</p>
 </div>
 
-<turbo-frame id="shuffle-recipe" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes/<%= @shuffle.shuffle_recipes.first.id %>"></turbo-frame>
+<turbo-frame id="shuffle-recipe" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes/<%= @shuffle.shuffle_recipes.where(position: @shuffle.current_index).sole.id %>"></turbo-frame>
+
+<turbo-frame id="shuffle_recipes" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes"></turbo-frame>

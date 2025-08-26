@@ -5,4 +5,8 @@ class ShuffleRecipe < ApplicationRecord
   belongs_to :recipe
 
   validates :position, presence: true, numericality: { greater_than_or_equal_to: 0 }, uniqueness: { scope: :shuffle_id }
+  
+  def humanize_status
+    I18n.t("activerecord.attributes.shuffle_recipe.status.#{status}")
+  end
 end

@@ -1,0 +1,9 @@
+
+<%= turbo_stream.replace "shuffle-recipe" do %>
+  <%= render partial: "shuffle_recipe", locals: { shuffle: @shuffle, shuffle_recipe: @shuffle.shuffle_recipes.where(position: @shuffle.current_index).first, recipe: @shuffle.shuffle_recipes.where(position: @shuffle.current_index).first.recipe } %>
+<% end %>
+
+
+<%= turbo_stream.update "shuffle-recipe-line-#{@shuffle_recipe.id}" do %>
+  <%= render partial: "shuffle_recipe_line", locals: { shuffle: @shuffle, shuffle_recipe_line: @shuffle_recipe } %>
+<% end %>
