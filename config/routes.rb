@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "look_ups/new"
   resources :creators, only: %i[ show ]
   resources :recipes do
     resources :sources, only: %i[show new create edit update destroy  ]
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
     resources :shuffle_recipes, only: %i[index show update]
   end
   resources :sources, only: %i[show new create edit ]
+
+  get "look_up/", to: "look_ups#new", as: :retrieve
+  post "look_up/", to: "look_ups#create"
 
   # Authentication
   resource :session
