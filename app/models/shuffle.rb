@@ -52,6 +52,6 @@ class Shuffle < ApplicationRecord
   private
 
   def generate_share_token
-    SecureRandom.alphanumeric(12).scan(/.{4}/).join("-")
+    SecureRandom.alphanumeric(12).upcase.scan(/.{4}/).join("-")
   end
 end
