@@ -1,6 +1,8 @@
 <%= tag.div class: "flex flex-col justify-center m-2 gap-3" do %>
   <%= tag.h1 "Shuffle", class: "font-bold text-4xl text-center dark:text-white" %>
-  <%= tag.p "This is a shuffle page", class: "text-center text-gray-600 dark:text-gray-400" %>
+  <%= tag.p "This is a shuffle page", class: "text-center text-gray-600 dark:text-gray-400" do %>
+    To share this shuffle, use the code <%= tag.span @shuffle.share_token, class: "bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300" %>
+  <% end %>
 <% end %>
 
 

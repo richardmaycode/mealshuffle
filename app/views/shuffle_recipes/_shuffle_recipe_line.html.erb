@@ -1,14 +1,54 @@
 <turbo-frame id="shuffle-recipe-line-<%= shuffle_recipe_line.id %>">
   <div class="w-full p-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
     <div class="grid grid-cols-[100px_1fr_100px] gap-4 dark:text-white">
-      <div class="flex align-middletext-xs font-medium me-2 px-2.5 py-0.5 rounded-sm text-center <%= status_class(shuffle_recipe_line.status) %>">
-        <%= shuffle_recipe_line.humanize_status %>
+      <div class="flex justify-center justify-items-center content-center items-center">
+        <div class="text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm text-center <%= status_class(shuffle_recipe_line.status) %>">
+          <%= shuffle_recipe_line.humanize_status %>
+        </div>
       </div>
       <div class="font-bold">
         <%= shuffle_recipe_line.recipe.name %>
       </div>
-      <div class="place-self-center">
-        Options
+      <div class="place-self-end">
+        <!--<div data-controller="dropdown" class="relative">
+          <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">Options</button>
+
+          <div
+            data-dropdown-target="menu"
+            class="hidden transition transform origin-top-right absolute right-0"
+            data-transition-enter-from="opacity-0 scale-95"
+            data-transition-enter-to="opacity-100 scale-100"
+            data-transition-leave-from="opacity-100 scale-100"
+            data-transition-leave-to="opacity-0 scale-95"
+          >
+            <a href="#" data-action="dropdown#toggle">Account settings</a>
+            <a href="#" data-action="dropdown#toggle">Support</a>
+            <a href="#" data-action="dropdown#toggle">License</a>
+          </div>
+        </div>-->
+
+        <div data-controller="dropdown" class="relative">
+          <button data-action="dropdown#toggle click@window->dropdown#hide" class="px-3 py-2 text-xs font-medium text-center rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:text-white dark:hover:bg-gray-700" type="button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+          </svg>
+
+          </button>
+
+        <!-- Dropdown menu -->
+          <div data-dropdown-target="menu" class="absolute -bottom-32 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Accept</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reject</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Skip</a>
+                </li>
+              </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

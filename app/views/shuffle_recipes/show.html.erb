@@ -22,7 +22,7 @@
   <% else %>
     <%= tag.div class: "grid grid-cols-[max-content_1fr_max-content] mt-16 mx-auto max-w-3xl" do %>
       <div class="flex justify-center h-full peer/left hover:bg-red-50 hover:dark:bg-red-800 rounded-xl bg-gray-50 dark:bg-gray-800 dark:border-gray-700 px-6">
-        <div class="self-center">
+        <div class="self-center place-self-center">
           <%= button_to shuffle_shuffle_recipe_path(@shuffle, @shuffle_recipe, status: :rejected), method: :patch, class: "text-red-700 border border-red-700 bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800 dark:bg-red-500 self-center" do %>
             <%= image_tag('thumbs-down.svg', class: 'size-12') %>
           <% end %>
@@ -35,7 +35,7 @@
           <% end %>
         </div>
       </div>
-      <div class="flex justify-center transition-transform duration-300 ease-in-out peer-hover/right:rotate-6 peer-hover/left:-rotate-6 px-16 ">
+      <div class="flex justify-center transition-transform duration-300 ease-in-out peer-hover/right:rotate-4 peer-hover/left:-rotate-4 px-16 ">
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <%= image_tag @recipe.image.attached? ? url_for(@recipe.image) : "https://placehold.co/600x400", class: "rounded-t-lg" %>
           <div class="p-5">
