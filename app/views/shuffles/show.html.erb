@@ -8,6 +8,6 @@
 
 <turbo-frame id="shuffle-recipe" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes/<%= @shuffle.shuffle_recipes.where(position: @shuffle.current_index).sole.id %>"></turbo-frame>
 
-<%= tag.div class: "max-w-2xl mx-auto" do %>
+<%= tag.div class: "w-full mx-auto" do %>
   <turbo-frame id="shuffle_recipes" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes"></turbo-frame>
 <% end %>
