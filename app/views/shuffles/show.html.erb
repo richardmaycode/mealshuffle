@@ -1,8 +1,11 @@
-<div>
-  <h1 class="font-bold text-4xl">Shuffles#show</h1>
-  <p>Find me in app/views/shuffles/show.html.erb</p>
-</div>
+<%= tag.div class: "flex flex-col justify-center m-2 gap-3" do %>
+  <%= tag.h1 "Shuffle", class: "font-bold text-4xl text-center dark:text-white" %>
+  <%= tag.p "This is a shuffle page", class: "text-center text-gray-600 dark:text-gray-400" %>
+<% end %>
+
 
 <turbo-frame id="shuffle-recipe" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes/<%= @shuffle.shuffle_recipes.where(position: @shuffle.current_index).sole.id %>"></turbo-frame>
 
-<turbo-frame id="shuffle_recipes" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes"></turbo-frame>
+<%= tag.div class: "max-w-2xl mx-auto" do %>
+  <turbo-frame id="shuffle_recipes" src="/shuffles/<%= @shuffle.id %>/shuffle_recipes"></turbo-frame>
+<% end %>

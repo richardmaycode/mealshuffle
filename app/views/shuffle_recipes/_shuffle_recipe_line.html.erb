@@ -1,6 +1,6 @@
 <turbo-frame id="shuffle-recipe-line-<%= shuffle_recipe_line.id %>">
   <div class="w-full p-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-    <div class="grid grid-cols-[100px_1fr_100px] gap-4">
+    <div class="grid grid-cols-[100px_1fr_100px] gap-4 dark:text-white">
       <div class="flex align-middletext-xs font-medium me-2 px-2.5 py-0.5 rounded-sm text-center <%= status_class(shuffle_recipe_line.status) %>">
         <%= shuffle_recipe_line.humanize_status %>
       </div>
